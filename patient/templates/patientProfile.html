@@ -1,0 +1,236 @@
+{% include 'Master.html' %}
+{% block body %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+body{margin-top:20px;
+background-color:#f2f6fc;
+color:#69707a;
+}
+.img-account-profile {
+    height: 10rem;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+.card .card-header {
+    font-weight: 500;
+}
+.card-header:first-child {
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.form-control, .dataTable-input {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #69707a;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c5ccd6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.35rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nav-borders .nav-link.active {
+    color: #0061f2;
+    border-bottom-color: #0061f2;
+}
+.nav-borders .nav-link {
+    color: #69707a;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+    </style>
+  </head>
+
+    
+    <body id="top">
+    
+        <main>
+        
+{% comment %} 
+            <section class="h-100 h-custom">
+                <div class="container py-5 h-100">
+                  <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-lg-8 col-xl-6">
+                      <div class="card rounded-3">
+                    
+                        <div class="card-body p-4 p-md-5">
+                          <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">My Profile</h3>
+              
+                          <form class="px-md-2" action="" method="post">
+                            {% csrf_token %}
+              
+                            <div class="row">
+                                <div class="Col">
+                                <label class="form-label" for="form3Example1q">Name</label>
+                                <input type="text"
+                                class="form-control"
+                                name="name"
+                                value={{users.Patient_Name}}
+                                required />
+                                </div>
+                                <div class="col">
+                                <label class="form-label" for="form3Example1q">Phone Number</label>
+                                <input
+                                 type="tel"
+                                class="form-control"
+                                name="Phonenumber"
+                                value={{users.Patient_PhoneNumber}}
+                                required/>
+                                </div>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="form3Example1q">Email</label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                name="email"
+                                value={{users.Patient_Email}}
+                                required
+                              />
+                            </div>
+                      
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="form3Example1q">Gender</label>
+
+                              <input
+                              type="text"
+                              class="form-control"
+                              name="gender"
+                              value={{users.Patient_Gender}}
+                              required
+                            />
+                            </div>
+            
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form3Example1q">Age</label>
+                          <input
+                            type="number"
+                            class="form-control"                   
+                            name="age"
+                            value={{users.Patient_Age}}
+                            required
+                          />
+                        </div>
+                        </div>
+                          <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+                          </form>
+        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </section> {% endcomment %}
+
+            <div class="container-xl px-4 mt-4">
+              <div class="row">
+                  <div class="col-xl-4">
+                      <!-- Profile picture card-->
+                      <div class="card mb-4 mb-xl-0">
+                          <div class="card-header">My Profile</div>
+                          <div class="card-body text-center">
+                              <!-- Profile picture image-->
+                              <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                              <!-- Profile picture help block-->
+                              <p class="card-text"><b>Name:</b> {{users.Patient_Name}}</p>
+                              <p class="card-text"><b>Email:</b> {{users.Patient_Email}}</p>
+                              <p class="card-text"><b>Phonenumber:</b> {{users.Patient_PhoneNumber}}</p>
+                              <p class="card-text"><b>Age:</b> {{users.Patient_Age}}</p>
+                              <a class="btn btn-primary" href="/patientLogout">Logout</a>
+
+                              <!-- Profile picture upload button-->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xl-8">
+                      <!-- Account details card-->
+                      <div class="card mb-4">
+                          <div class="card-header">Edit Profile</div>
+                          <div class="card-body">
+                              <form class="px-md-2" action="updateDetail/{{users.id}}" method="post">
+                                {% csrf_token %}
+                                  <div class="row gx-3 mb-3">
+                                      <div class="col-md-6">
+                                          <label class="small mb-1" for="inputFirstName">Name</label>
+                                          <input class="form-control"  type="text" name = "uname" placeholder="Enter your first name" value={{users.Patient_Name}}>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <label class="small mb-1" for="inputLastName">Age</label>
+                                          <input class="form-control" id="inputLastName" type="text" name = "uage" placeholder="Enter your last name" value={{users.Patient_Age}}>
+                                      </div>
+                                  </div>
+
+                                  <div class="row gx-3 mb-3">
+                            
+                                 
+                                  </div>
+                                  <!-- Form Group (email address)-->
+                                  <div class="mb-3">
+                                      <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                      <input class="form-control" id="inputEmailAddress" name = "uemail" type="email" placeholder="Enter your email address" value={{users.Patient_Email}}>
+                                  </div>
+                                  <!-- Form Row-->
+                                  <div class="row gx-3 mb-3">
+                                      <!-- Form Group (phone number)-->
+                                      <div class="col-md-6">
+                                          <label class="small mb-1" for="inputPhone">Phone number</label>
+                                          <input class="form-control" id="inputPhone" type="tel" name = "uphone" placeholder="Enter your phone number" value={{users.Patient_PhoneNumber}}>
+                                      </div>
+                                    
+                                  </div>
+                                  <!-- Save changes button-->
+                                  <button class="btn btn-primary" type="submit">Save changes</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+   
+        </main>
+
+ 
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/scrollspy.min.js"></script>
+        <script src="js/custom.js"></script>
+<!--
+
+TemplateMo 566 Medic Care
+
+https://templatemo.com/tm-566-medic-care
+
+-->
+    </body>
+</html>
+{% endblock body %}

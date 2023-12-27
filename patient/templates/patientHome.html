@@ -1,0 +1,180 @@
+
+{% include 'Master.html' %}
+
+{% block body %}
+
+{% load static %}
+{% if messages %}
+{% for msg in messages %}
+    <p class="alert alert-success" align="center">{{msg}}</p>
+{% endfor %}
+{% endif %}</p> 
+
+<!doctype html>
+<html lang="en">
+
+
+    
+    <body id="top">
+    
+        <main>
+            <section class="hero" id="hero">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{% static 'images/slider/portrait-successful-mid-adult-doctor-with-crossed-arms.jpg' %}" class="img-fluid" alt="">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="{% static 'images/slider/young-asian-female-dentist-white-coat-posing-clinic-equipment.jpg' %}" class="img-fluid" alt="">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="{% static 'images/slider/doctor-s-hand-holding-stethoscope-closeup.jpg' %}" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="heroText d-flex flex-column justify-content-center">
+
+                                <h1 class="mt-auto mb-2">
+                                    Better
+                                    <div class="animated-info">
+                                        <span class="animated-item">health</span>
+                                        <span class="animated-item">days</span>
+                                        <span class="animated-item">lives</span>
+                                    </div>
+                                </h1>
+
+                                <p class="mb-4">Good health is the cornerstone of a fulfilling life. Through exercise, balanced nutrition, and self-care, we can nurture our physical and mental well-being. Prioritizing preventive measures and seeking support when needed allows us to lead healthier, happier lives.</p>
+
+                                <div class="heroLinks d-flex flex-wrap align-items-center">
+                                    <a class="custom-link me-4" href="#about" data-hover="Learn More">Learn More</a>
+
+                                    <p class="contact-phone mb-0"><i class="bi-phone"></i>+91-{{doc.Doctor_Phone_Number}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" id="about">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <h2 class="mb-lg-3 mb-3">
+                                
+                                {% comment %} {% if Doctor_Name %} {% endcomment %}
+                                    <h2>Meet Dr. {{ doc.Doctor_Name }}</h2>
+                                {% comment %} {% else %} {% endcomment %}
+                                {% comment %} {% endif %}</h2> {% endcomment %}
+
+                            <p>Protect yourself and others by wearing masks and washing hands frequently. Outdoor is safer than indoor for gatherings or holding events. People who get sick with Coronavirus disease (COVID-19) will experience mild to moderate symptoms and recover without special treatments.</p>
+
+                            <p>You can feel free to use this CSS template for your medical profession or health care related websites. You can <a rel="nofollow" href="http://paypal.me/templatemo" target="_blank">support us a little</a> via PayPal if this template is good and useful for your work.</p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-5 col-12 mx-auto">
+                            <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
+                                <p class="featured-text"><span class="featured-number">12</span> Years<br> of Experiences</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-6 ps-0">
+                            <img src="{% static 'images/gallery/medium-shot-man-getting-vaccine.jpg' %}" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">
+                        </div>
+
+                        <div class="col-lg-6 col-6 pe-0">
+                            <img src="{% static 'images/gallery/female-doctor-with-presenting-hand-gesture.jpg' %}" class="img-fluid galleryImage" alt="wear a mask" title="wear a mask to protect yourself">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="reviews">
+                <div class="container">
+                    <div class="row">
+
+
+
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+        <footer class="site-footer section-padding" id="contact">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-5 me-auto col-12">
+                        <h5 class="mb-lg-4 mb-3">Opening Hours</h5>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex">
+                                Sunday : Closed
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                Monday, Tuesday - Firday
+                                <span>8:00 AM - 3:30 PM</span>
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                Saturday
+                                <span>10:30 AM - 5:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-12 my-4 my-lg-0">
+                        <h5 class="mb-lg-4 mb-3">Our Clinic</h5>
+
+                        <p><a href="mailto:hello@company.co">{{ doc.Doctor_Email_id }}</a><p>
+
+                        <p>{{doc.Doctor_Clinic_Address}}</p>
+                    </div>
+
+                    
+
+                    <div class="col-lg-3 col-12 ms-auto mt-4 mt-lg-0">
+                        <p class="copyright-text">Copyright © Docotr Desk 2023 </p>
+                    </div>
+
+                </div>
+            </section>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/scrollspy.min.js"></script>
+        <script src="js/custom.js"></script>
+<!--
+
+TemplateMo 566 Medic Care
+
+https://templatemo.com/tm-566-medic-care
+
+-->
+    </body>
+</html>
+{% endblock body %}
